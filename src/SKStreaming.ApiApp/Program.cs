@@ -35,5 +35,6 @@ app.UseHttpsRedirection();
 
 // Add endpoint for chat completion through Semantic Kernel
 app.MapCompleteChatEndpoint();
+app.MapCompleteChatStreamingEndpoint();
 
 app.Run();
