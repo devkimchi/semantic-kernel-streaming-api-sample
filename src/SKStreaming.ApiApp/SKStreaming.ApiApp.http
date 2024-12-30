@@ -1,0 +1,11 @@
+@SKStreaming.ApiApp_HostAddress = http://localhost:5017
+
+POST {{SKStreaming.ApiApp_HostAddress}}/api/chat/complete/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "prompt": "하늘은 왜 파란색인가요?"
+}
+
+###
