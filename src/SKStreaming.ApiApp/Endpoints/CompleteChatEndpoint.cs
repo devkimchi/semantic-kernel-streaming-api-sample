@@ -11,17 +11,17 @@ public static class CompleteChatEndpoint
     {
         var api = routeBuilder.MapGroup("api/chat");
 
-        api.MapPost("complete", PostChatCompleteAsync)
+        api.MapPost("complete", PostCompleteChatAsync)
            .Accepts<PromptRequest>(contentType: "application/json")
            .Produces<PromptResponse>(statusCode: StatusCodes.Status200OK, contentType: "application/json")
-           .WithTags("openai")
+           .WithTags("chat")
            .WithName("CompleteChat")
            .WithOpenApi();
 
         return routeBuilder;
     }
 
-    public static async Task<PromptResponse> PostChatCompleteAsync([FromBody] PromptRequest req, IKernelService service)
+    public static async Task<PromptResponse> PostCompleteChatAsync([FromBody] PromptRequest req, IKernelService service)
     {
         var result = await service.CompleteChatAsync(req.Prompt);
 

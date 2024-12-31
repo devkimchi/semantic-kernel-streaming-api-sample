@@ -11,17 +11,17 @@ public static class CompleteChatStreamingEndpoint
     {
         var api = routeBuilder.MapGroup("api/chat");
 
-        api.MapPost("complete/streaming", PostChatCompleteStreamingAsync)
+        api.MapPost("complete/streaming", PostCompleteChatStreamingAsync)
            .Accepts<PromptRequest>(contentType: "application/json")
            .Produces<IEnumerable<PromptResponse>>(statusCode: StatusCodes.Status200OK, contentType: "application/json")
-           .WithTags("openai")
+           .WithTags("chat")
            .WithName("CompleteChatStreaming")
            .WithOpenApi();
 
         return routeBuilder;
     }
 
-    public static async IAsyncEnumerable<PromptResponse> PostChatCompleteStreamingAsync([FromBody] PromptRequest req, IKernelService service)
+    public static async IAsyncEnumerable<PromptResponse> PostCompleteChatStreamingAsync([FromBody] PromptRequest req, IKernelService service)
     {
         var result = service.CompleteChatStreamingAsync(req.Prompt);
 

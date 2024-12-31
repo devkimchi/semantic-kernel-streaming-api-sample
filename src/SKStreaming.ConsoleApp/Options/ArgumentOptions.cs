@@ -40,11 +40,3 @@ public class ArgumentOptions
         return options;
     }
 }
-
-public enum QuestionType
-{
-    Undefined,
-    Chat,
-    ChatStreaming,
-    Booking,
-}

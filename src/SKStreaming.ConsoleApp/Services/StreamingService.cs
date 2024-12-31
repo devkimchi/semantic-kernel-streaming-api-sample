@@ -35,7 +35,7 @@ public class StreamingService(IEnumerable<IApiClient> clients) : IStreamingServi
             {
                 QuestionType.Chat => this._clients.OfType<CompleteChatClient>().SingleOrDefault(),
                 QuestionType.ChatStreaming => this._clients.OfType<CompleteChatStreamingClient>().SingleOrDefault(),
-                QuestionType.Booking => throw new InvalidOperationException("Invalid question type"),
+                QuestionType.Bookings => this._clients.OfType<CompleteBookingsStreamingClient>().SingleOrDefault(),
                 _ => throw new InvalidOperationException("Invalid question type"),
             };
 
@@ -67,6 +67,9 @@ public class StreamingService(IEnumerable<IApiClient> clients) : IStreamingServi
                         await Task.Delay(20);
                         Console.Write(item!.Content);
                     }
+
+                    Console.WriteLine();
+                    Console.WriteLine();
                 }
             }
         }
@@ -79,7 +82,7 @@ public class StreamingService(IEnumerable<IApiClient> clients) : IStreamingServi
     private void DisplayHelp()
     {
         Console.WriteLine("Usage:");
-        Console.WriteLine("  -t, --question-type    The type of question. Possible values: chat, chatstreaming, chat-streaming, booking");
+        Console.WriteLine("  -t, --question-type    The type of question. Possible values: chat, chatstreaming, chat-streaming, bookings");
         Console.WriteLine("  -h, --help     Display help");
     }
 }
