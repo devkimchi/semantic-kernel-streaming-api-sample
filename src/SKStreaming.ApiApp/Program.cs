@@ -1,6 +1,7 @@
 using Microsoft.SemanticKernel;
 
 using SKStreaming.ApiApp.Endpoints;
+using SKStreaming.ApiApp.Plugins;
 using SKStreaming.ApiApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,12 +14,17 @@ builder.Services.AddOpenApi();
 builder.Services.AddSingleton<Kernel>(sp =>
 {
     var config = sp.GetRequiredService<IConfiguration>();
-    var kernel = Kernel.CreateBuilder()
-                       .AddAzureOpenAIChatCompletion(
-                           endpoint: config["Azure:OpenAI:Endpoint"]!,
-                           apiKey: config["Azure:OpenAI:ApiKey"]!,
-                           deploymentName: config["Azure:OpenAI:DeploymentName"]!)
-                       .Build();
+
+    var kb = Kernel.CreateBuilder()
+                   .AddAzureOpenAIChatCompletion(
+                       endpoint: config["Azure:OpenAI:Endpoint"]!,
+                       apiKey: config["Azure:OpenAI:ApiKey"]!,
+                       deploymentName: config["Azure:OpenAI:DeploymentName"]!);
+
+    kb.Plugins.AddFromType<BookingsPlugin>();
+
+    var kernel = kb.Build();
+
     return kernel;
 });
 builder.Services.AddScoped<IKernelService, KernelService>();
@@ -36,5 +42,6 @@ app.UseHttpsRedirection();
 // Add endpoint for chat completion through Semantic Kernel
 app.MapCompleteChatEndpoint();
 app.MapCompleteChatStreamingEndpoint();
+app.MapCompleteBookingsStreamingEndpoint();
 
 app.Run();

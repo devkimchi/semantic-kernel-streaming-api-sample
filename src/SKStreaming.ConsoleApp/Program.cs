@@ -1,8 +1,4 @@
-﻿using System.Net.Http.Json;
-using System.Text;
-using System.Text.Json;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -22,6 +18,10 @@ var host = Host.CreateDefaultBuilder(args)
                        client.BaseAddress = new Uri(config["ApiApp:Endpoints:Http:0"]!);
                    });
                    services.AddHttpClient<IApiClient, CompleteChatStreamingClient>(client =>
+                   {
+                       client.BaseAddress = new Uri(config["ApiApp:Endpoints:Http:0"]!);
+                   });
+                   services.AddHttpClient<IApiClient, CompleteBookingsStreamingClient>(client =>
                    {
                        client.BaseAddress = new Uri(config["ApiApp:Endpoints:Http:0"]!);
                    });

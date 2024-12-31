@@ -5,7 +5,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "prompt": "하늘은 왜 파란색인가요?"
+  "prompt": "Why is the sky blue?"
 }
 
 ###
@@ -15,5 +15,15 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "prompt": "하늘은 왜 파란색인가요?"
+  "prompt": "Why is the sky blue?"
+}
+
+###
+
+POST {{SKStreaming.ApiApp_HostAddress}}/api/bookings/streaming
+Accept: application/json
+Content-Type: application/json
+
+{
+  "prompt": "Book a meeting room."
 }
