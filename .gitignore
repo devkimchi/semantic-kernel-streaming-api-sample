@@ -399,6 +399,4 @@ FodyWeavers.xsd
 
 # Project-specific
 .DS_Store
-workshop/
-workshop*/
-Database.*
+appsettings.Development.json
