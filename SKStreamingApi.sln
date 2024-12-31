@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{99769618-712
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKStreaming.ApiApp", "src\SKStreaming.ApiApp\SKStreaming.ApiApp.csproj", "{28958E8D-F28C-48D2-AD1C-1FDC29DA928F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKStreaming.ConsoleApp", "src\SKStreaming.ConsoleApp\SKStreaming.ConsoleApp.csproj", "{881AE155-37EC-4B56-9F89-724C8D0EF84A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,8 +22,13 @@ Global
 		{28958E8D-F28C-48D2-AD1C-1FDC29DA928F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28958E8D-F28C-48D2-AD1C-1FDC29DA928F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28958E8D-F28C-48D2-AD1C-1FDC29DA928F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{881AE155-37EC-4B56-9F89-724C8D0EF84A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{881AE155-37EC-4B56-9F89-724C8D0EF84A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{881AE155-37EC-4B56-9F89-724C8D0EF84A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{881AE155-37EC-4B56-9F89-724C8D0EF84A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{28958E8D-F28C-48D2-AD1C-1FDC29DA928F} = {99769618-7129-455B-B97E-00B8FF1A0866}
+		{881AE155-37EC-4B56-9F89-724C8D0EF84A} = {99769618-7129-455B-B97E-00B8FF1A0866}
 	EndGlobalSection
 EndGlobal
