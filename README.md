@@ -25,7 +25,7 @@ This provides sample app that shows the ASP.NET Core streaming API capability wi
     cd semantic-kernel-streaming-api-sample
     ```
 
-1. Open `src/SKStreaming.ApiApp/appsettings.json` and update the `OpenAI` section with your Azure OpenAI access endpoint and key.
+1. Open `src/SKStreaming.ApiApp/appsettings.json` and update either the `Azure:OpenAI` section with your Azure OpenAI access endpoint and key or the `GitHub:Models` section with your GitHub PAT and Model ID.
 
     ```json
     {
@@ -35,11 +35,29 @@ This provides sample app that shows the ASP.NET Core streaming API capability wi
           "ApiKey": "{{AZURE_OPENAI_API_KEY}}",
           "DeploymentName": "{{AZURE_OPENAI_DEPLOYMENT_NAME}}"
         }
+      },
+
+      "GitHub": {
+        "Models": {
+          "Endpoint": "https://models.inference.ai.azure.com",
+          "GitHubToken": "{{GITHUB_PAT}}",
+          "ModelId": "{{GITHUB_MODEL_ID}}"
+        }
       }
     }
     ```
 
    > **NOTE**: DO NOT commit this file back to the repository.
+
+1. In the same `appsettings.json` file, choose which LLM you will use. You can choose either `aoai` or `github`. As a default, it's set to `github`.
+
+    ```json
+    {
+      "SemanticKernel": {
+        "ServiceId": "github"
+      }
+    }
+    ```
 
 1. Build the sample apps.
 
